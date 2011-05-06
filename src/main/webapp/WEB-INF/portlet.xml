@@ -27,10 +27,6 @@
            <value>Stockholm</value>
         </preference>
         <preference>
-           <name>longestSide</name>
-           <value>256</value>
-        </preference>
-        <preference>
          <name>useCustomTemplate</name>
          <value>false</value>
        </preference>

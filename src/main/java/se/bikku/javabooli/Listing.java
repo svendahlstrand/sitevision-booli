@@ -2,19 +2,17 @@ package se.bikku.javabooli;
 
 public class Listing {
   private String created;
-  private String streetAddress;
-  private String city;
   private String nRooms;
   private String priceForSale;
   private String listingUrl;
+    private String areaLiving;
   private Images images;
+  private Location location;
 
   public Listing() {
   }
 
   public Listing(String streetAddress, String city, String numberOfRooms, String priceForSale) {
-    this.streetAddress = streetAddress;
-    this.city = city;
     this.nRooms = numberOfRooms;
     this.priceForSale = priceForSale;
   }
@@ -24,15 +22,19 @@ public class Listing {
   }
 
   public String getStreetAddress() {
-    return streetAddress;
+    return location.getAddress().streetAddress;
   }
 
   public String getCity() {
-    return city;
+    return location.getAddress().city;
   }
 
   public String getNumberOfRooms() {
     return nRooms;
+  }
+
+  public boolean hasImage() {
+    return true;
   }
 
   public String getImageUrl() {
@@ -52,9 +54,14 @@ public class Listing {
     return images.getImage().getUrl().replaceAll("0x0", width + "x" + height);
   }
 
-  public String getListingUrl() {
+  public String getUrl() {
     return listingUrl;
   }
+
+  public String getLivingArea() {
+    return areaLiving;
+  }
+
 
   public static class Images {
     private Image image;
@@ -72,5 +79,19 @@ public class Listing {
       return url;
     }
 
+  }
+
+  public static class Location {
+    private Address address;
+
+    public Address getAddress() {
+      return address;
+    }
+
+  }
+
+  public static class Address {
+    private String city;
+    private String streetAddress;
   }
 }

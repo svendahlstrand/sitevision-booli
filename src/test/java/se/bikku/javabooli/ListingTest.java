@@ -12,16 +12,6 @@ public class ListingTest {
   }
 
   @Test
-  public void shouldHaveStreetAddress() {
-    assertEquals("Storgatan", listing.getStreetAddress());
-  }
-
-  @Test
-  public void shouldHaveCity() {
-    assertEquals("Småstaden", listing.getCity());
-  }
-
-  @Test
   public void shouldHaveNumberOfRooms() {
     assertEquals("3.0", listing.getNumberOfRooms());
   }

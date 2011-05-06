@@ -4,7 +4,6 @@
       <legend>$language.getString("settings")</legend>
       <ul>
         <li><label for="location">$language.getString("location"):</label> <input type="text" name="location" value="$location" id="location" /></li>
-        <li><label for="longestSide">$language.getString("longestSide"):</label> <input type="text" name="longestSide" id="longestSide" value="$longestSide" /></li>
       </ul>
     </fieldset>
     <fieldset>

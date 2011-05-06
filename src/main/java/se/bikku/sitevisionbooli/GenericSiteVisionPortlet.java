@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * This class adds default behavior for processAction and custom SiteVision specific mode: config.
@@ -100,7 +101,7 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet
     String template = "";
 
     Locale locale = renderRequest.getLocale();
-    //ResourceBundle bundle = ResourceBundle.getBundle("se.bikku.language", locale);
+    ResourceBundle bundle = ResourceBundle.getBundle("translations", locale);
 
     if (useCustomTemplate)
     {
@@ -124,7 +125,7 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet
     context.put("customTemplate", template);
     context.put("configjsPath", configjsPath);
     context.put("jqueryPath", jqueryPath);
-    //context.put("language", bundle);
+    context.put("language", bundle);
 
     super.doCustom(renderRequest, renderResponse);
   }
@@ -141,10 +142,10 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet
   public void doView(RenderRequest renderRequest, RenderResponse renderResponse) throws PortletException, IOException
   {
     Locale locale = renderRequest.getLocale();
-    //ResourceBundle bundle = ResourceBundle.getBundle("se.hj.language", locale);
+    ResourceBundle bundle = ResourceBundle.getBundle("translations", locale);
 
     Context context = getContext(renderRequest);
-    //context.put("language", bundle);
+    context.put("language", bundle);
 
     PrintWriter writer = renderResponse.getWriter();
     PortletPreferences prefs = renderRequest.getPreferences();
