@@ -11,6 +11,16 @@
        <title>SiteVisionBooli</title>
        <keywords>other</keywords>
      </portlet-info>
+
+     <init-param>
+       <name>ViewPage</name>
+       <value>/WEB-INF/views/view.vm</value>
+     </init-param>
+     <init-param>
+       <name>CustomPage</name>
+       <value>/WEB-INF/views/config.vm</value>
+     </init-param>
+
      <portlet-preferences>
         <preference>
            <name>location</name>
@@ -20,6 +30,14 @@
            <name>longestSide</name>
            <value>256</value>
         </preference>
+        <preference>
+         <name>useCustomTemplate</name>
+         <value>false</value>
+       </preference>
+       <preference>
+         <name>customTemplate</name>
+         <value></value>
+       </preference>
      </portlet-preferences>
 
      <display-name xml:lang="EN">Booli</display-name>

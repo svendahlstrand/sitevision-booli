@@ -1,0 +1,21 @@
+<div id="editable-velocity-portlet">
+  <form action="$renderResponse.createActionURL()" method="post">
+    <fieldset>
+      <legend>$language.getString("settings")</legend>
+      <ul>
+        <li><label for="location">$language.getString("location"):</label> <input type="text" name="location" value="$location" id="location" /></li>
+        <li><label for="longestSide">$language.getString("longestSide"):</label> <input type="text" name="longestSide" id="longestSide" value="$longestSide" /></li>
+      </ul>
+    </fieldset>
+    <fieldset>
+      <legend>$language.getString("template")</legend>
+      <ul>
+        <li><label for="useCustomTemplate">$language.getString("useCustomTemplate"):</label> <input type="checkbox" value="true" #if($useCustomTemplate) checked="checked" #end name="useCustomTemplate" id="useCustomTemplate" /><input type="hidden" value="false" name="useCustomTemplate" /></li>
+        <li><label for="customTemplate">$language.getString("customTemplate"):</label> <textarea name="customTemplate" id="customTemplate">$customTemplate</textarea></li>
+      </ul>
+    </fieldset>
+    <p><input type="submit" value="$language.getString("save")" /></p>
+  </form>
+</div>
+<script type="text/javascript" src="$jqueryPath"></script>
+<script type="text/javascript" src="$applicationjsPath"></script>

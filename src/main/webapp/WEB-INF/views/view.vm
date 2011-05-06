@@ -1,0 +1,5 @@
+#foreach ($listing in $listings)
+  <img src="$listing.getImageUrl(256)" alt="" /><br />
+  $listing.priceForSale
+<br /><br /><br />
+#end
