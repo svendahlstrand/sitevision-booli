@@ -1,0 +1,134 @@
+{
+    "booli": {
+        "auth": {
+            "code": 1,
+            "messages": []
+        },
+        "content": {
+            "totalListingCount": 2874,
+            "listings": [{
+                "booliId": "866940",
+                "priceForSale": "1400000",
+                "created": "2011-05-03 17:00:18",
+                "location": {
+                    "region": {
+                        "municipalityName": "Stockholm",
+                        "countyName": "Stockholms l\u00e4n"
+                    },
+                    "address": {
+                        "city": "Stockholm",
+                        "streetAddress": "Bagarfruv\u00e4gen 5",
+                        "position": {
+                            "quality": "M\u00e4klardefinierad",
+                            "latitude": "59.25686474",
+                            "longitude": "18.10787181"
+                        }
+                    },
+                    "namedAreas": {
+                        "namedArea": "Sk\u00f6ndal"
+                    }
+                },
+                "agent": {
+                    "name": "L\u00e4nsf\u00f6rs\u00e4kringar Fastighetsf\u00f6rmedling"
+                },
+                "nRooms": "3.0",
+                "areaLiving": "79.0",
+                "areaLot": "",
+                "fees": {
+                    "fee": {
+                        "amount": "4583"
+                    }
+                },
+                "listingUrl": "http:\/\/www.booli.se\/bostad\/lagenhet\/skondal\/bagarfruvagen+5\/866940",
+                "objectType": "L\u00e4genhet",
+                "images": {
+                    "image": {
+                        "url": "http:\/\/i.bcdn.se\/images\/cache\/1975474_0x0.jpg"
+                    }
+                }
+            },
+            {
+                "booliId": "866923",
+                "priceForSale": "995000",
+                "created": "2011-05-03 16:52:32",
+                "location": {
+                    "region": {
+                        "municipalityName": "Stockholm",
+                        "countyName": "Stockholms l\u00e4n"
+                    },
+                    "address": {
+                        "city": "Stockholm",
+                        "streetAddress": "Finn Malmgrens v\u00e4g 59",
+                        "position": {
+                            "quality": "M\u00e4klardefinierad",
+                            "latitude": "59.29606884",
+                            "longitude": "18.11006350"
+                        }
+                    },
+                    "namedAreas": {
+                        "namedArea": "Hammarbyh\u00f6jden"
+                    }
+                },
+                "agent": {
+                    "name": "Svenska M\u00e4klarhuset"
+                },
+                "nRooms": "2.0",
+                "areaLiving": "38.0",
+                "areaLot": "",
+                "fees": {
+                    "fee": {
+                        "amount": "3230"
+                    }
+                },
+                "listingUrl": "http:\/\/www.booli.se\/bostad\/lagenhet\/hammarbyhojden\/finn+malmgrens+vag+59\/866923",
+                "objectType": "L\u00e4genhet",
+                "images": {
+                    "image": {
+                        "url": "http:\/\/i.bcdn.se\/images\/cache\/1975336_0x0.jpg"
+                    }
+                }
+            },
+            {
+                "booliId": "866919",
+                "priceForSale": "1375000",
+                "created": "2011-05-03 16:50:47",
+                "location": {
+                    "region": {
+                        "municipalityName": "Stockholm",
+                        "countyName": "Stockholms l\u00e4n"
+                    },
+                    "address": {
+                        "city": "Stockholm",
+                        "streetAddress": "Drachmannsgatan 36",
+                        "position": {
+                            "quality": "M\u00e4klardefinierad",
+                            "latitude": "59.34708191",
+                            "longitude": "17.88985769"
+                        }
+                    },
+                    "namedAreas": {
+                        "namedArea": "Lilla \u00c4ngby"
+                    }
+                },
+                "agent": {
+                    "name": "Svenska M\u00e4klarhuset"
+                },
+                "nRooms": "3.0",
+                "areaLiving": "93.0",
+                "areaLot": "",
+                "fees": {
+                    "fee": {
+                        "amount": "5922"
+                    }
+                },
+                "listingUrl": "http:\/\/www.booli.se\/bostad\/lagenhet\/lilla+angby\/drachmannsgatan+36\/866919",
+                "objectType": "L\u00e4genhet",
+                "images": {
+                    "image": {
+                        "url": "http:\/\/i.bcdn.se\/images\/cache\/1975309_0x0.jpg"
+                    }
+                }
+            }]
+        }
+    }
+}

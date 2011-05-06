@@ -1,0 +1,9 @@
+h1. Booli för SiteVision
+
+En SiteVision-modul för att lista bostäder till salu från "Booli.se":http://www.booli.se.
+
+h2. Du behöver ha följande för att kunna bygga
+
+* SiteVision installerat
+* Java JDK
+* Ant

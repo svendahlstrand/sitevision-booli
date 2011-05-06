@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portlet-app xmlns:sv="http://www.sitevision.se/sitevisionportlet"
+             xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd"
+             version="1.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">
+   <portlet>
+     <portlet-name>SiteVisionBooli</portlet-name>
+     <portlet-class>se.bikku.sitevisionbooli.Portlet</portlet-class>
+     <portlet-info>
+       <title>SiteVisionBooli</title>
+       <keywords>other</keywords>
+     </portlet-info>
+     <portlet-preferences>
+        <preference>
+           <name>location</name>
+           <value>Stockholm</value>
+        </preference>
+        <preference>
+           <name>longestSide</name>
+           <value>256</value>
+        </preference>
+     </portlet-preferences>
+
+     <display-name xml:lang="EN">Booli</display-name>
+     <display-name xml:lang="SV">Booli</display-name>
+     <supported-locale>SV</supported-locale>
+     <supported-locale>EN</supported-locale>
+
+     <supports>
+       <mime-type>text/html</mime-type>
+       <portlet-mode>VIEW</portlet-mode>
+       <portlet-mode>CONFIG</portlet-mode>
+     </supports>
+   </portlet>
+
+   <custom-portlet-mode>
+     <description>SiteVision config mode</description>
+     <portlet-mode>CONFIG</portlet-mode>
+   </custom-portlet-mode>
+</portlet-app>
