@@ -27,6 +27,14 @@
            <value>Stockholm</value>
         </preference>
         <preference>
+           <name>callerId</name>
+           <value></value>
+        </preference>
+        <preference>
+           <name>key</name>
+           <value></value>
+        </preference>
+        <preference>
          <name>useCustomTemplate</name>
          <value>false</value>
        </preference>

@@ -20,10 +20,15 @@ public class Portlet extends GenericSiteVisionPortlet {
     PortletPreferences prefs = request.getPreferences();
     String location = prefs.getValue("location", "Stockholm");
 
-    Booli booli = new Booli("javabooli", "6b0fjIG8JFLgtzywGwOrUu1YppsbZkiY5WdyzOFP");
+    Booli booli = new Booli(prefs.getValue("callerId", ""), prefs.getValue("key", ""));
 
     Context context = getContext(request);
-    context.put("listings", booli.search(location));
+
+    try {
+      context.put("listings", booli.search(location));
+    } catch(Exception e) {
+      context.put("error", true);
+    }
 
     super.doView(request, response);
   }

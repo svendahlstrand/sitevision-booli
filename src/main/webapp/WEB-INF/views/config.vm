@@ -4,6 +4,8 @@
       <legend>$language.getString("settings")</legend>
       <ul>
         <li><label for="location">$language.getString("location"):</label> <input type="text" name="location" value="$location" id="location" /></li>
+        <li><label for="callerId">$language.getString("callerId"):</label> <input type="text" name="callerId" value="$callerId" id="callerId" /></li>
+        <li><label for="key">$language.getString("key"):</label> <input type="text" name="key" value="$key" id="key" /></li>
       </ul>
     </fieldset>
     <fieldset>

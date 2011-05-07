@@ -1,19 +1,26 @@
-<ul style="list-style: none; margin: 0; padding: 0;">
-  #foreach ($listing in $listings)
-    #if ($listing.imageUrl)
-      <li style="clear: both;">
-        <img src="$listing.getImageUrl(150)" alt="" style="float: left; margin: 0 10px 10px 0;" width="150" />
-        <h2>$listing.streetAddress</h2>
-        <p>
-          $listing.numberOfRooms rum,
-          $listing.livingArea m2,
-          $listing.priceForSale kr
-        </p>
-        <p>
-          <a href="$listing.url" title="$listing.streetAddress">$language.getString("show")</a>
-        </p>
-      </li>
+#if ($listings)
+  <ul style="list-style: none; margin: 0; padding: 0;">
+    #foreach ($listing in $listings)
+      #if ($listing.imageUrl)
+        <li style="clear: both;">
+          <img src="$listing.getImageUrl(150)" alt="" style="float: left; margin: 0 10px 10px 0;" width="150" />
+          <h2>$listing.streetAddress</h2>
+          <p>
+            $listing.numberOfRooms rum,
+            $listing.livingArea m2,
+            $listing.priceForSale kr
+          </p>
+          <p>
+            <a href="$listing.url" title="$listing.streetAddress">$language.getString("show")</a>
+          </p>
+        </li>
+      #end
     #end
-  #end
-</ul>
-<div style="clear: both;"></a>
+  </ul>
+  <div style="clear: both;"></a>
+#end
+#if ($error)
+  <p>
+    <strong>$language.getString("portletIsNotConfigured")</strong>
+  </p>
+#end
