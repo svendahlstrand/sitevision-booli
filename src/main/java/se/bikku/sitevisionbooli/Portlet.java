@@ -9,6 +9,9 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import java.io.IOException;
 
+/**
+ * SiteVision portlet to show real estate listings from Booli.se.
+ */
 public class Portlet extends GenericSiteVisionPortlet {
   @Override
   public void doView(RenderRequest request, RenderResponse response) throws PortletException, IOException {
