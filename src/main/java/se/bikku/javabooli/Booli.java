@@ -29,11 +29,11 @@ public class Booli {
 
     parameters.add("format", "json");
     parameters.add("callerId", callerId);
-    parameters.add("time", BooliUtils.dateTimeISO8601());
-    parameters.add("unique", BooliUtils.uniqueString());
+    parameters.add("time", AuthenticationUtils.dateTimeISO8601());
+    parameters.add("unique", AuthenticationUtils.uniqueString());
     String data = callerId + parameters.get("time").get(0) + key + parameters.get("unique").get(0);
 
-    parameters.add("hash", BooliUtils.shaHex(data));
+    parameters.add("hash", AuthenticationUtils.shaHex(data));
 
     String json = webResource.path(city).queryParams(parameters).get(String.class);
     ResponseData container = new Gson().fromJson(json, ResponseData.class);

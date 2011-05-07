@@ -4,34 +4,46 @@ import org.junit.Test;
 import java.util.regex.Pattern;
 import static org.junit.Assert.*;
 
-public class BooliUtilsTest {
+public class AuthenticationUtilsTest {
   @Test
   public void shouldGenerateValidShaHex()
   {
-    String data = "myteststring";
-    String validHash = "01839df24747e474228c147818bc6e9e667d6fb6";
+    assertEquals("a9993e364706816aba3e25717850c26c9cd0d89d", AuthenticationUtils.shaHex("abc"));
 
-    assertEquals(validHash, BooliUtils.shaHex(data));
+    assertEquals(
+      "84983e441c3bd26ebaae4aa1f95129e5e54670f1",
+      AuthenticationUtils.shaHex("abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq"));
+  }
+
+  @Test
+  public void shouldThrowRuntimeExceptionWhenBogusAlgorithmIsUsed()
+  {
+    try {
+      AuthenticationUtils.getMessageDigest("Bogus Bogus");
+      fail("A RuntimeException should have been thrown.");
+    } catch (RuntimeException e) {
+      // Expected exception.
+    }
   }
 
   @Test
   public void shouldGenerateUniqueStrings() throws Exception {
-    String one = BooliUtils.uniqueString();
-    String another = BooliUtils.uniqueString();
+    String one = AuthenticationUtils.uniqueString();
+    String another = AuthenticationUtils.uniqueString();
 
     assertFalse("Two unique strings should not be equal: " + one + ".", one.equals(another));
   }
 
   @Test
   public void shouldGenerate16CharactersUniqueStrings() throws Exception {
-    String uniqueString = BooliUtils.uniqueString();
+    String uniqueString = AuthenticationUtils.uniqueString();
 
     assertEquals(16, uniqueString.length());
   }
 
   @Test
   public void shouldDeliverDateAndTimeInISO8601Format() throws Exception {
-    String time = BooliUtils.dateTimeISO8601();
+    String time = AuthenticationUtils.dateTimeISO8601();
 
     String regex = "([0-9]{4})(-([0-9]{2})(-([0-9]{2})(T([0-9]{2}):([0-9]{2})(:([0-9]{2})(\\.([0-9]+))?)?(Z|(([-+])([0-9]{2}):([0-9]{2})))?)?)?)?";
     Boolean isMatch = Pattern.matches(regex, time);
