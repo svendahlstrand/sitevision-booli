@@ -30,7 +30,7 @@ public class Listing {
   }
 
   public String getNumberOfRooms() {
-    return nRooms;
+    return nRooms.replaceAll(".0", "");
   }
 
   public boolean hasImage() {
@@ -58,7 +58,7 @@ public class Listing {
   }
 
   public String getLivingArea() {
-    return areaLiving;
+    return areaLiving.replaceAll(".0", "");
   }
 
 
