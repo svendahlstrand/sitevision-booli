@@ -46,19 +46,31 @@ public class Booli {
     Client client = Client.create(config);
 
     WebResource webResource = client.resource(BASE_URL);
+
+    String json = webResource.path(location).queryParams(getDefaultParameters()).get(String.class);
+    Response response = new Gson().fromJson(json, Response.class);
+
+    return response.getListings();
+  }
+
+  /**
+   * Default parameters with format and authentication.
+   * 
+   * @return a map of parameters
+   */
+  MultivaluedMap<String, String> getDefaultParameters() {
     MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
 
+    // Format json
     parameters.add("format", "json");
+
+    // Authentication data
     parameters.add("callerId", callerId);
     parameters.add("time", AuthenticationUtils.dateTimeISO8601());
     parameters.add("unique", AuthenticationUtils.uniqueString());
     String data = callerId + parameters.get("time").get(0) + key + parameters.get("unique").get(0);
-
     parameters.add("hash", AuthenticationUtils.shaHex(data));
 
-    String json = webResource.path(location).queryParams(parameters).get(String.class);
-    Response response = new Gson().fromJson(json, Response.class);
-
-    return response.getListings();
+    return parameters;
   }
 }
