@@ -5,7 +5,7 @@ public class Listing {
   private String nRooms;
   private String priceForSale;
   private String listingUrl;
-    private String areaLiving;
+  private String areaLiving;
   private Images images;
   private Location location;
 
@@ -47,8 +47,7 @@ public class Listing {
   }
 
   public String getImageUrl(Integer width, Integer height) {
-    if (images == null)
-    {
+    if (images == null) {
       return null;
     }
     return images.getImage().getUrl().replaceAll("0x0", width + "x" + height);

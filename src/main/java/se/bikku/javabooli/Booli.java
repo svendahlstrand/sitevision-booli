@@ -12,14 +12,13 @@ import java.util.List;
 
 /**
  * Wrapper for the Booli.se's public API.
- *
+ * <p/>
  * Example Make a search for listings near Jönköping and print the first one's address to console.
- *
+ * <p/>
  * Booli booli = Booli.new("my_caller_id", "my_secret_key");
  * List<Listing> listings = booli.search("Jönköping");
- *
+ * <p/>
  * System.out.println(listings.get(0).getStreetAddress());
- *
  */
 public class Booli {
   private static final String BASE_URL = "http://api.booli.se/listing/";
@@ -28,9 +27,8 @@ public class Booli {
   private final String key;
 
   /**
-   *
    * @param callerId the username you choosed when regestering at http://www.booli.se/api/
-   * @param key the api key
+   * @param key      the api key
    */
   public Booli(String callerId, String key) {
     this.callerId = callerId;

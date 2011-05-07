@@ -17,8 +17,7 @@ public class AuthenticationUtils {
    * @param data Data to digest
    * @return SHA-1 digest as a hex string
    */
-  public static String shaHex(String data)
-  {
+  public static String shaHex(String data) {
     MessageDigest messageDigest = getMessageDigest("SHA-1");
 
     byte[] digest = messageDigest.digest(data.getBytes());
@@ -37,9 +36,8 @@ public class AuthenticationUtils {
    *
    * @return unique string
    */
-  public static String uniqueString()
-  {
-    String random =  UUID.randomUUID().toString();
+  public static String uniqueString() {
+    String random = UUID.randomUUID().toString();
     random = random.replaceAll("-", "");
     random = random.substring(0, 16);
 
@@ -59,12 +57,12 @@ public class AuthenticationUtils {
   }
 
   /**
-  * Returns a MessageDigest for the given algorithm.
-  *
-  * @param algorithm the name of the algorithm requested.
-  * @return A MessageDigest instance
-  * @throws RuntimeException
-  */
+   * Returns a MessageDigest for the given algorithm.
+   *
+   * @param algorithm the name of the algorithm requested.
+   * @return A MessageDigest instance
+   * @throws RuntimeException
+   */
   static MessageDigest getMessageDigest(String algorithm) {
     try {
       return MessageDigest.getInstance(algorithm);
