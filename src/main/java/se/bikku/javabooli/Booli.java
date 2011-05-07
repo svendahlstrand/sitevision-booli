@@ -47,7 +47,7 @@ public class Booli {
 
     WebResource webResource = client.resource(BASE_URL);
 
-    String json = webResource.path(location).queryParams(getDefaultParameters()).get(String.class);
+    String json = webResource.path(location).queryParams(defaultParameters()).get(String.class);
     Response response = new Gson().fromJson(json, Response.class);
 
     return response.getListings();
@@ -58,7 +58,7 @@ public class Booli {
    *
    * @return a map of parameters
    */
-  MultivaluedMap<String, String> getDefaultParameters() {
+  MultivaluedMap<String, String> defaultParameters() {
     MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
     String time = AuthenticationUtils.dateTimeISO8601();
     String unique = AuthenticationUtils.uniqueString();
