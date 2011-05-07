@@ -9,22 +9,19 @@ import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import java.io.IOException;
 
-public class Portlet extends GenericSiteVisionPortlet
-{
-   @Override
-   public void doView(RenderRequest aRenderRequest, RenderResponse aRenderResponse)
-           throws PortletException, IOException
-   {
-      aRenderResponse.setContentType("text/html");
+public class Portlet extends GenericSiteVisionPortlet {
+  @Override
+  public void doView(RenderRequest request, RenderResponse response) throws PortletException, IOException {
+    response.setContentType("text/html");
 
-      PortletPreferences prefs = aRenderRequest.getPreferences();
-      String location = prefs.getValue("location", "Stockholm");
+    PortletPreferences prefs = request.getPreferences();
+    String location = prefs.getValue("location", "Stockholm");
 
-      Booli booli = new Booli("javabooli", "6b0fjIG8JFLgtzywGwOrUu1YppsbZkiY5WdyzOFP");
+    Booli booli = new Booli("javabooli", "6b0fjIG8JFLgtzywGwOrUu1YppsbZkiY5WdyzOFP");
 
-      Context context = getContext(aRenderRequest);
-      context.put("listings", booli.search(location));
+    Context context = getContext(request);
+    context.put("listings", booli.search(location));
 
-      super.doView(aRenderRequest, aRenderResponse);
-   }
+    super.doView(request, response);
+  }
 }

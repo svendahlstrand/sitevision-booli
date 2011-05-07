@@ -20,14 +20,13 @@ import java.util.ResourceBundle;
  * Uses Velocity templates for rendering.
  * The config mode has the possibility to change the view template.
  */
-public class GenericSiteVisionPortlet extends GenericVelocityPortlet
-{
+public class GenericSiteVisionPortlet extends GenericVelocityPortlet {
   /**
    * Adds support for SiteVision specific portlet mode.
-   *
+   * <p/>
    * * doConfig for handling config requests
-   *
-   * Only dispatch to config if the current user has write permission. 
+   * <p/>
+   * Only dispatch to config if the current user has write permission.
    *
    * @param renderRequest
    * @param renderResponse
@@ -36,23 +35,19 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet
    */
   @Override
   protected final void doDispatch(RenderRequest renderRequest, RenderResponse renderResponse)
-    throws PortletException, IOException
-  {
+    throws PortletException, IOException {
     // Handle the custom portlet mode CONFIG that SiteVision uses.
-    if ("config".equals(renderRequest.getPortletMode().toString()))
-    {
-      if(!hasWritePermission(renderRequest)) return;
+    if ("config".equals(renderRequest.getPortletMode().toString())) {
+      if (!hasWritePermission(renderRequest)) return;
       doConfig(renderRequest, renderResponse);
-    }
-    else
-    {
+    } else {
       super.doDispatch(renderRequest, renderResponse);
     }
   }
 
   /**
    * Helper method to save all preferences. Returns to portlet mode view.
-   *
+   * <p/>
    * Only saves if the current user has writer permisson.
    *
    * @param actionRequest
@@ -62,17 +57,13 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet
    */
   @Override
   public void processAction(ActionRequest actionRequest, ActionResponse actionResponse)
-    throws PortletException, IOException
-  {
-    if(hasWritePermission(actionRequest))
-    {
+    throws PortletException, IOException {
+    if (hasWritePermission(actionRequest)) {
       PortletPreferences prefs = actionRequest.getPreferences();
-      for (Enumeration enm = prefs.getNames(); enm.hasMoreElements();)
-      {
+      for (Enumeration enm = prefs.getNames(); enm.hasMoreElements();) {
         String name = (String) enm.nextElement();
         String newValue = actionRequest.getParameter(name);
-        if (newValue != null)
-        {
+        if (newValue != null) {
           prefs.setValue(name, newValue);
         }
       }
@@ -94,8 +85,7 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet
    * @throws java.io.IOException
    */
   public void doConfig(RenderRequest renderRequest, RenderResponse renderResponse)
-    throws PortletException, IOException
-  {
+    throws PortletException, IOException {
     PortletPreferences prefs = renderRequest.getPreferences();
     Boolean useCustomTemplate = ("true".equals(prefs.getValue("useCustomTemplate", "false")));
     String template = "";
@@ -103,12 +93,9 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet
     Locale locale = renderRequest.getLocale();
     ResourceBundle bundle = ResourceBundle.getBundle("translations", locale);
 
-    if (useCustomTemplate)
-    {
+    if (useCustomTemplate) {
       template = prefs.getValue("customTemplate", "tes");
-    }
-    else
-    {
+    } else {
       PortletConfig config = getPortletConfig();
       String viewPage = config.getInitParameter("ViewPage");
       String filename = getPortletContext().getRealPath(viewPage);
@@ -118,7 +105,7 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet
     String configjsPath = renderRequest.getContextPath() + "/js/config.js";
     String jqueryPath = renderRequest.getContextPath() + "/js/jquery.js";
     configjsPath = renderResponse.encodeURL(configjsPath);
-    jqueryPath= renderResponse.encodeURL(jqueryPath);
+    jqueryPath = renderResponse.encodeURL(jqueryPath);
 
     Context context = getContext(renderRequest);
     context.put("useCustomTemplate", useCustomTemplate);
@@ -132,15 +119,14 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet
 
   /**
    * Adds the language bundle to the context
-   * 
+   *
    * @param renderRequest
    * @param renderResponse
    * @throws PortletException
    * @throws java.io.IOException
    */
   @Override
-  public void doView(RenderRequest renderRequest, RenderResponse renderResponse) throws PortletException, IOException
-  {
+  public void doView(RenderRequest renderRequest, RenderResponse renderResponse) throws PortletException, IOException {
     Locale locale = renderRequest.getLocale();
     ResourceBundle bundle = ResourceBundle.getBundle("translations", locale);
 
@@ -151,28 +137,24 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet
     PortletPreferences prefs = renderRequest.getPreferences();
 
     Boolean useCustomTemplate = ("true".equals(prefs.getValue("useCustomTemplate", "false")));
-    if (useCustomTemplate)
-    {
+    if (useCustomTemplate) {
       String templateStr = prefs.getValue("customTemplate", "");
       Velocity.evaluate(context, writer, "customTemplate", templateStr);
-    }
-    else
-    {
+    } else {
       super.doView(renderRequest, renderResponse);
     }
   }
 
   /**
    * Checks if current user has write permission on current page (write permissions == permissions to write/update shared portlet preferences).
-   *
+   * <p/>
    * Note! This method uses SiteVision Public API functionality only available in SiteVision 2.6 and later.
    * If executed in previous versions (SiteVision 2.5 etc.) an AbstractMethodError or such will occur.
    *
    * @param portletRequest current request (RenderRequest or ActionRequest)
    * @return true if current user has read permissions on current page, false otherwise
    */
-  protected final boolean hasWritePermission(PortletRequest portletRequest)
-  {
+  protected final boolean hasWritePermission(PortletRequest portletRequest) {
     Utils siteVisionUtils = (Utils) portletRequest.getAttribute("sitevision.utils");
     PermissionUtil permissionUtil = siteVisionUtils.getPermissionUtil();
 
