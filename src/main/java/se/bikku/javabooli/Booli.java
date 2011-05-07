@@ -10,21 +10,44 @@ import com.sun.jersey.core.util.MultivaluedMapImpl;
 import javax.ws.rs.core.MultivaluedMap;
 import java.util.List;
 
+/**
+ * Wrapper for the Booli.se's public API.
+ *
+ * Example Make a search for listings near Jönköping and print the first one's address to console.
+ *
+ * Booli booli = Booli.new("my_caller_id", "my_secret_key");
+ * List<Listing> listings = booli.search("Jönköping");
+ *
+ * System.out.println(listings.get(0).getStreetAddress());
+ *
+ */
 public class Booli {
+  private static final String BASE_URL = "http://api.booli.se/listing/";
+
   private final String callerId;
   private final String key;
-  private final String baseUrl = "http://api.booli.se/listing/";
 
+  /**
+   *
+   * @param callerId the username you choosed when regestering at http://www.booli.se/api/
+   * @param key the api key
+   */
   public Booli(String callerId, String key) {
     this.callerId = callerId;
     this.key = key;
   }
 
-  public List<Listing> search(String city) {
+  /**
+   * Search Booli's listings near a specified location.
+   *
+   * @param location a city or other location (Uppsala, Stockholm/Vasastan)
+   * @return listings matching the search criteria
+   */
+  public List<Listing> search(String location) {
     ClientConfig config = new DefaultClientConfig();
     Client client = Client.create(config);
 
-    WebResource webResource = client.resource(baseUrl);
+    WebResource webResource = client.resource(BASE_URL);
     MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
 
     parameters.add("format", "json");
@@ -35,7 +58,7 @@ public class Booli {
 
     parameters.add("hash", AuthenticationUtils.shaHex(data));
 
-    String json = webResource.path(city).queryParams(parameters).get(String.class);
+    String json = webResource.path(location).queryParams(parameters).get(String.class);
     ResponseData container = new Gson().fromJson(json, ResponseData.class);
 
     return container.getBooli().getContent().getListings();
