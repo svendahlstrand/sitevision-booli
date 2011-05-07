@@ -35,6 +35,10 @@
            <value></value>
         </preference>
         <preference>
+           <name>maxToShow</name>
+           <value>5</value>
+        </preference>
+        <preference>
          <name>useCustomTemplate</name>
          <value>false</value>
        </preference>

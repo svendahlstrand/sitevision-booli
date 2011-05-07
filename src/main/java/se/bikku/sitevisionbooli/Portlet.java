@@ -26,8 +26,9 @@ public class Portlet extends GenericSiteVisionPortlet {
     Context context = getContext(request);
 
     try {
-      context.put("listings", booli.search(location));
-    } catch(Exception e) {
+      context.put("listings", booli.search(location, Integer.parseInt(prefs.getValue("maxToShow", "5"))));
+    }
+    catch(Exception e) {
       ResourceBundle translations = ResourceBundle.getBundle("translations", request.getLocale());
       fail(translations.getString("portletIsNotConfigured"), response);
     }

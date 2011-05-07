@@ -23,7 +23,7 @@
       #end
     #end
   </ul>
-  <div style="clear: both;"></a>
+  <div style="clear: both;"></div>
 #else
   <p>
     <strong>Inga bostäder hittades</strong>

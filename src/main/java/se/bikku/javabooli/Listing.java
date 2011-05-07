@@ -30,7 +30,7 @@ public class Listing {
   }
 
   public String getNumberOfRooms() {
-    return nRooms.replaceAll(".0", "");
+    return floor(nRooms);
   }
 
   public boolean hasImage() {
@@ -58,7 +58,11 @@ public class Listing {
   }
 
   public String getLivingArea() {
-    return areaLiving.replaceAll(".0", "");
+    return floor(areaLiving);
+  }
+
+  private String floor(String number) {
+    return number.endsWith(".0") ? number.substring(0, number.length() - 2) : number;
   }
 
 

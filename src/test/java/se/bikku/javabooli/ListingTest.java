@@ -13,7 +13,7 @@ public class ListingTest {
 
   @Test
   public void shouldHaveNumberOfRooms() {
-    assertEquals("3.0", listing.getNumberOfRooms());
+    assertEquals("3", listing.getNumberOfRooms());
   }
 
   @Test

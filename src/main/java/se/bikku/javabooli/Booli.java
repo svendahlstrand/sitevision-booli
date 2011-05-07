@@ -53,6 +53,27 @@ public class Booli {
     return response.getListings();
   }
 
+  public List<Listing> search(String location, Integer maxResults) {
+    List<Listing> listings = search(location);
+
+    if (maxResults == null || maxResults < 1 || listings.size() < maxResults) {
+      return listings;
+    }
+
+    /*
+     * TODO: Use as example!
+     *
+    Iterator<Listing> iterator = listings.iterator();
+    List<Listing> newListings = new ArrayList<Listing>();
+
+    for (int i = 0; (iterator.hasNext() && i < maxResults); i++)
+    {
+      newListings.add(iterator.next());
+    }*/
+
+    return listings.subList(0, maxResults);
+  }
+
   /**
    * Default parameters with format and authentication.
    *
