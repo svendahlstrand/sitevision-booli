@@ -22,11 +22,11 @@ public class Listing {
   }
 
   public String getStreetAddress() {
-    return location.getAddress().streetAddress;
+    return location.address.streetAddress;
   }
 
   public String getCity() {
-    return location.getAddress().city;
+    return location.address.city;
   }
 
   public String getNumberOfRooms() {
@@ -50,7 +50,7 @@ public class Listing {
     if (images == null) {
       return null;
     }
-    return images.getImage().getUrl().replaceAll("0x0", width + "x" + height);
+    return images.image.url.replaceAll("0x0", width + "x" + height);
   }
 
   public String getUrl() {
@@ -62,31 +62,19 @@ public class Listing {
   }
 
 
+  /*
+   * The following classes exists to deal with the nestled Booli API.
+   */
   public static class Images {
     private Image image;
-
-    public Image getImage() {
-      return image;
-    }
-
   }
 
   public static class Image {
     private String url;
-
-    public String getUrl() {
-      return url;
-    }
-
   }
 
   public static class Location {
     private Address address;
-
-    public Address getAddress() {
-      return address;
-    }
-
   }
 
   public static class Address {

@@ -57,8 +57,8 @@ public class Booli {
     parameters.add("hash", AuthenticationUtils.shaHex(data));
 
     String json = webResource.path(location).queryParams(parameters).get(String.class);
-    ResponseData container = new Gson().fromJson(json, ResponseData.class);
+    Response response = new Gson().fromJson(json, Response.class);
 
-    return container.getBooli().getContent().getListings();
+    return response.getListings();
   }
 }
