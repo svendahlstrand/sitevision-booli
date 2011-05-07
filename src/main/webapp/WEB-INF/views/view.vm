@@ -24,9 +24,8 @@
     #end
   </ul>
   <div style="clear: both;"></a>
-#end
-#if ($error)
+#else
   <p>
-    <strong>$language.getString("portletIsNotConfigured")</strong>
+    <strong>Inga bostäder hittades</strong>
   </p>
 #end

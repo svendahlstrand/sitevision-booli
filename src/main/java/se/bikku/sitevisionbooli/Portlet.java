@@ -8,6 +8,7 @@ import javax.portlet.PortletPreferences;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 /**
  * SiteVision portlet to show real estate listings from Booli.se.
@@ -27,7 +28,8 @@ public class Portlet extends GenericSiteVisionPortlet {
     try {
       context.put("listings", booli.search(location));
     } catch(Exception e) {
-      context.put("error", true);
+      ResourceBundle translations = ResourceBundle.getBundle("translations", request.getLocale());
+      fail(translations.getString("portletIsNotConfigured"), response);
     }
 
     super.doView(request, response);

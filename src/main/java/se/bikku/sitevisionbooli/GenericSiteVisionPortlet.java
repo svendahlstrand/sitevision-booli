@@ -160,4 +160,8 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet {
 
     return permissionUtil.hasWritePermission();
   }
+
+  protected static void fail(String error, RenderResponse response) throws IOException {
+    response.getWriter().print("<p><strong>" + error + "</strong></p>");
+  }
 }
