@@ -1,5 +1,10 @@
 package se.bikku.javabooli;
 
+/**
+ * Represents a listing from Booli.
+ *
+ * The inner classes of Listing is needed for gson to convert json to Java objects correctly.
+ */
 public class Listing {
   private String created;
   private String nRooms;
@@ -65,10 +70,6 @@ public class Listing {
     return number.endsWith(".0") ? number.substring(0, number.length() - 2) : number;
   }
 
-
-  /*
-   * The following classes exists to deal with the nestled Booli API.
-   */
   public static class Images {
     private Image image;
   }

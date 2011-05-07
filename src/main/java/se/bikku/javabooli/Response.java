@@ -2,12 +2,17 @@ package se.bikku.javabooli;
 
 import java.util.List;
 
-/*
- * These classes exist for the purpose of matching the nestled Booli API.
+/**
+ * Represents the response from Booli's REST-API. We are really just intressted in the getListings() method.
+ * 
+ * The inner classes of Response is needed for gson to convert json to Java objects correctly.
  */
 public class Response {
   private BooliData booli;
 
+  /**
+   * @return all the listings
+   */
   public List<Listing> getListings() {
     return booli.content.listings;
   }
