@@ -55,22 +55,36 @@ public class Booli {
 
   /**
    * Default parameters with format and authentication.
-   * 
+   *
    * @return a map of parameters
    */
   MultivaluedMap<String, String> getDefaultParameters() {
     MultivaluedMap<String, String> parameters = new MultivaluedMapImpl();
+    String time = AuthenticationUtils.dateTimeISO8601();
+    String unique = AuthenticationUtils.uniqueString();
 
-    // Format json
+    // Use json format so when can parse the response with gson.
     parameters.add("format", "json");
 
-    // Authentication data
+    /*
+     * Booli's API requires authentication, read more: http://www.booli.se/api/docs/#autentisering.
+     */
     parameters.add("callerId", callerId);
-    parameters.add("time", AuthenticationUtils.dateTimeISO8601());
-    parameters.add("unique", AuthenticationUtils.uniqueString());
-    String data = callerId + parameters.get("time").get(0) + key + parameters.get("unique").get(0);
-    parameters.add("hash", AuthenticationUtils.shaHex(data));
+    parameters.add("time", time);
+    parameters.add("unique", unique);
+    parameters.add("hash", hash(time, unique));
 
     return parameters;
+  }
+
+  /**
+   * Booli's special hash thats needed for authentication, read more: http://www.booli.se/api/docs/#autentisering.
+   *
+   * @param time
+   * @param unique
+   * @return hash
+   */
+  String hash(String time, String unique) {
+    return AuthenticationUtils.shaHex(callerId + time + key + unique);
   }
 }
