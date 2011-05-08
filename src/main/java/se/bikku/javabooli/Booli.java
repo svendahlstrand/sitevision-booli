@@ -53,6 +53,13 @@ public class Booli {
     return response.getListings();
   }
 
+  /**
+   * Search Booli's listings near a specified location and limit the results.
+   *
+   * @param location a city or other location (Uppsala, Stockholm/Vasastan)
+   * @param maxResults max number of listings you want back
+   * @return listings matching the search criteria
+   */
   public List<Listing> search(String location, Integer maxResults) {
     List<Listing> listings = search(location);
 
