@@ -1,4 +1,4 @@
-<div id="editable-velocity-portlet">
+<div id="generic-sitevision-portlet">
   <form action="$renderResponse.createActionURL()" method="post">
     <fieldset>
       <legend>$language.getString("settings")</legend>
@@ -19,5 +19,3 @@
     <p><input type="submit" value="$language.getString("save")" /></p>
   </form>
 </div>
-<script type="text/javascript" src="$jqueryPath"></script>
-<script type="text/javascript" src="$applicationjsPath"></script>

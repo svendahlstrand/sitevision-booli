@@ -16,9 +16,12 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 /**
- * This class adds default behavior for processAction and custom SiteVision specific mode: config.
- * Uses Velocity templates for rendering.
- * The config mode has the possibility to change the view template.
+ * Generic SiteVision portlet simplifies the implementation of a SiteVision compatible portlet.
+ *
+ * * Add support for SiteVision specific CONFIG mode
+ * * The action phase automatically saves all preferences
+ * * Uses Velocity templates for rendering
+ * * The possibility for end users to use a custom template
  */
 public class GenericSiteVisionPortlet extends GenericVelocityPortlet {
   /**
@@ -94,7 +97,7 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet {
     ResourceBundle bundle = ResourceBundle.getBundle("translations", locale);
 
     if (useCustomTemplate) {
-      template = prefs.getValue("customTemplate", "tes");
+      template = prefs.getValue("customTemplate", "");
     } else {
       PortletConfig config = getPortletConfig();
       String viewPage = config.getInitParameter("ViewPage");
@@ -102,16 +105,9 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet {
       template = FileUtils.readFileToString(new File(filename));
     }
 
-    String configjsPath = renderRequest.getContextPath() + "/js/config.js";
-    String jqueryPath = renderRequest.getContextPath() + "/js/jquery.js";
-    configjsPath = renderResponse.encodeURL(configjsPath);
-    jqueryPath = renderResponse.encodeURL(jqueryPath);
-
     Context context = getContext(renderRequest);
     context.put("useCustomTemplate", useCustomTemplate);
     context.put("customTemplate", template);
-    context.put("configjsPath", configjsPath);
-    context.put("jqueryPath", jqueryPath);
     context.put("language", bundle);
 
     super.doCustom(renderRequest, renderResponse);
@@ -161,7 +157,14 @@ public class GenericSiteVisionPortlet extends GenericVelocityPortlet {
     return permissionUtil.hasWritePermission();
   }
 
-  protected static void fail(String error, RenderResponse response) throws IOException {
-    response.getWriter().print("<p><strong>" + error + "</strong></p>");
+  /**
+   * Will output a message if something goes wrong.
+   *
+   * @param message the message you want to display
+   * @param response
+   * @throws IOException
+   */
+  protected static void fail(String message, RenderResponse response) throws IOException {
+    response.getWriter().print("<p><strong>" + message + "</strong></p>");
   }
 }
