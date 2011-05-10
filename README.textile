@@ -2,8 +2,20 @@ h1. Booli för SiteVision
 
 En SiteVision-modul för att lista bostäder till salu från "Booli.se":http://www.booli.se.
 
-h2. Du behöver ha följande för att kunna bygga
+h2. Installera
 
-* SiteVision installerat
+* Ladda hem war-filen och installera
+* Skaffa en API-nyckel hos Booli.se
+* Konfigurera modulen med ditt användarnamn och din API-nyckel
+
+h2. Om du är utvecklare
+
+Vill du själv kompilera? Du behöver följande:
+
+* SiteVision
 * Java JDK
 * Ant
+
+h3. Tänk på
+
+Du kanske behöver ändra sökvägar, titta i filen build.xml.
